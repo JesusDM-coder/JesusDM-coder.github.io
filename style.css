@@ -1,0 +1,59 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif; /* Usa una fuente clara */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Un fondo suave */
+    color: #333;
+}
+
+h1, h2 {
+    color: #000; /* Negro para los títulos, como tu CV */
+}
+
+/* Centra el contenido */
+main, header, footer {
+    width: 80%;
+    margin: 20px auto; /* 20px arriba/abajo, centrado auto a los lados */
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco para las secciones */
+    border-radius: 8px; /* Bordes redondeados */
+}
+
+header {
+    text-align: center; /* Centra el título */
+    border-bottom: 3px solid #000; /* Línea negra sólida */
+}
+
+/* Esta es la clave: destaca tu proyecto */
+#proyecto-estrella {
+    background-color: #e0e0e0; /* Un color de fondo ligeramente distinto */
+    border: 2px solid #000;
+}
+
+#proyecto-estrella h2 {
+    color: #0056b3; /* Un color para destacar el título del proyecto */
+}
+
+/* Estilo para las listas (habilidades, contacto) */
+ul {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    background-color: #333;
+    color: #fff;
+}
+
+footer h2 {
+    color: #fff;
+}
