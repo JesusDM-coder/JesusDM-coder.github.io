@@ -1,59 +1,245 @@
-/* Estilos generales */
+/* STYLE.CSS - Portfolio Jesús Díaz Martín 
+*/
+
+/* 1. VARIABLES Y CONFIGURACIÓN GENERAL */
+:root {
+    --color-acento: #F28C28; /* Naranja otoñal vibrante */
+    --color-fondo-claro: #FFF7E8; /* Fondo (Naranja-amarillo muy pálido) */
+    --color-texto: #3E2723; /* Marrón oscuro (para texto) */
+    --color-fondo-oscuro: #3e1a00; /* Marrón oscuro (para Navbar/Footer) */
+    --color-fondo-tarjeta: #FFFAF0;
+}
+
+/* Suaviza el scroll al hacer clic en el menú */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: Arial, sans-serif; /* Usa una fuente clara */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Un fondo suave */
-    color: #333;
+    background-color: var(--color-fondo-claro); 
+    color: var(--color-texto);
 }
 
 h1, h2 {
-    color: #000; /* Negro para los títulos, como tu CV */
+    color: var(--color-texto);
+    font-weight: 700;
 }
 
-/* Centra el contenido */
-main, header, footer {
-    width: 80%;
-    margin: 20px auto; /* 20px arriba/abajo, centrado auto a los lados */
-    padding: 20px;
-    background-color: #ffffff; /* Fondo blanco para las secciones */
-    border-radius: 8px; /* Bordes redondeados */
+/* 2. MENÚ DE NAVEGACIÓN */
+.navbar {
+    background-color: var(--color-fondo-oscuro);
+    padding: 15px 0;
+    position: sticky; /* Fijo en la parte superior */
+    top: 0;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.navbar a:hover {
+    background-color: var(--color-acento);
+}
+
+/* 3. HEADER (SECCIÓN DE INICIO) */
 header {
-    text-align: center; /* Centra el título */
-    border-bottom: 3px solid #000; /* Línea negra sólida */
+    padding: 30px 40px;
+    background: var(--color-fondo-tarjeta); 
+    border-bottom: 5px solid var(--color-acento);
 }
 
-/* Esta es la clave: destaca tu proyecto */
-#proyecto-estrella {
-    background-color: #e0e0e0; /* Un color de fondo ligeramente distinto */
-    border: 2px solid #000;
+.header-content {
+    display: flex; 
+    align-items: center; /* Centra verticalmente */
+    gap: 30px; /* Espacio entre foto y texto */
+    max-width: 1200px; /* Limita el ancho */
+    margin: 0 auto; /* Centra el contenido del header */
 }
 
-#proyecto-estrella h2 {
-    color: #0056b3; /* Un color para destacar el título del proyecto */
+/* Foto de perfil con corrección de encuadre */
+.profile-photo {
+    width: 200px; 
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover ; 
+    object-position: center 80%; /* Alinea la foto para no cortar la cara */
+    margin: 0; 
+    border: 3px solid var(--color-acento); 
+    box-shadow: 0 0 0 5px rgba(242, 140, 40, 0.2);
+    animation: scaleIn 0.5s ease-out; 
+    flex-shrink: 1; /* Evita que la foto se encoja */
 }
 
-/* Estilo para las listas (habilidades, contacto) */
-ul {
-    list-style: none; /* Quita los puntos de la lista */
-    padding: 0;
+.header-titles {
+    flex-grow: 1; 
 }
 
-ul li {
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+header h2 {
+    font-size: 1.3em; 
+    color: var(--color-texto); 
+    margin-top: 0;
     margin-bottom: 10px;
 }
 
-/* Pie de página */
+.contact-info {
+    font-size: 0.9em;
+    color: #795548;
+    margin-bottom: 15px;
+}
+
+/* Botón de Descarga */
+.btn-download {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: var(--color-acento);
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-download:hover {
+    background-color: #C06C1E;
+    transform: translateY(-2px); 
+}
+
+/* 4. SECCIONES PRINCIPALES (main) */
+main {
+    padding-top: 20px;
+}
+
+section {
+    width: 80%;
+    max-width: 1000px; /* Limita el ancho */
+    margin: 30px auto;
+    padding: 30px;
+    background-color: var(--color-fondo-tarjeta);
+    border-left: 5px solid var(--color-acento); 
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+    
+    /* Animación de entrada */
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Efecto escalonado de aparición */
+#sobre-mi {
+    animation-delay: 0.2s;
+}
+#proyecto-estrella {
+    animation-delay: 0.4s;
+}
+#habilidades {
+    animation-delay: 0.6s;
+}
+#formacion {
+    animation-delay: 0.8s;
+}
+
+/* 5. SECCIÓN DE HABILIDADES (Grid) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 15px;
+    padding: 20px 0;
+}
+
+.skill-item {
+    background-color: var(--color-fondo-tarjeta);
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-weight: bold;
+    color: var(--color-acento);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px); /* Se levanta */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    cursor: default;
+}
+
+/* 6. FOOTER (Contacto) */
 footer {
     text-align: center;
-    margin-top: 30px;
-    background-color: #333;
+    margin-top: 50px;
+    padding: 30px 20px;
+    background-color: var(--color-fondo-oscuro);
     color: #fff;
 }
 
 footer h2 {
     color: #fff;
+    border-bottom: 2px solid var(--color-acento);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer li {
+    margin-bottom: 10px;
+}
+
+footer li a {
+    color: var(--color-acento);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+footer li a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* 7. ANIMACIONES (Keyframes) */
+
+/* Aparición de secciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aparición de la foto */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
